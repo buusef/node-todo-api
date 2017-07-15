@@ -42,10 +42,10 @@ app.get('/todos/:id', (req,res)=>{
 
 app.delete('/todos/:id', (req,res)=>{
     var id = req.params.id;
-    if(!ObjectID.isValid) return res.status(404).send();
-    Todo.findByIdAndRemove(id).then((doc)=>{
-        if(!doc) return res.status(404).send('User not found');
-        res.send(doc);
+    if(!ObjectID.isValid(id)) return res.status(404).send();
+    Todo.findByIdAndRemove(id).then((todo)=>{
+        if(!todo) return res.status(404).send('User not found');
+        res.send({todo});
     },(err)=>{
         res.status(400).send('Invalid');
     })
