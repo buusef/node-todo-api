@@ -4,6 +4,6 @@ var mongoose = require('mongoose');
 // instead of third-party libraries like Bluebird
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/TodoApp');
+mongoose.connect(process.env.MONGODB_URI);
 
 module.exports = {mongoose};
