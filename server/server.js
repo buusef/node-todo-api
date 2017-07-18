@@ -82,7 +82,7 @@ app.post('/users', (req,res)=>{
         res.header('x-auth', token).send(user);
     })
     .catch((e)=>{
-        res.status(404).send(e);
+        res.status(400).send();
     });
 })
 
