@@ -1,6 +1,18 @@
 const {SHA256} = require('crypto-js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 var message = 'I am user number 3';
+
+var signed = jwt.sign({d:message},'sss');
+
+(()=>{setTimeout(function() {
+    var a = jwt.sign({d:message},'sss');
+    console.log(a);
+
+    console.log(jwt.verify(a, 'sss'))
+}, 400)})();
+console.log(signed);
+console.log(jwt.verify(signed, 'sss'))
 
 var hash = SHA256(message).toString();
 
